@@ -1,12 +1,10 @@
 package shapes;
 
 import com.pixcel.shapes.Rectangle;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class RectangleTest {
 
     static Rectangle rect; // shared for all tests
@@ -26,16 +24,19 @@ class RectangleTest {
     }
 
     @Test
+    @Order(1)
     void shouldDetectSquare() {
         assertTrue(rect.isSquare());
     }
 
     @Test
+    @Order(2)
     void shouldCalculateArea() {
         assertEquals(25, rect.getArea());
     }
 
     @Test
+    @Order(3)
     void shouldHaveCorrectSidesArray() {
         double[] expectedSides = {rect.getLength(), rect.getWidth()};
         double[] actualSides = {5, 5};
