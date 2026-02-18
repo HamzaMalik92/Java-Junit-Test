@@ -34,4 +34,11 @@ class RectangleTest {
     void shouldCalculateArea() {
         assertEquals(25, rect.getArea());
     }
+
+    @Test
+    void shouldHaveCorrectSidesArray() {
+        double[] expectedSides = {rect.getLength(), rect.getWidth()};
+        double[] actualSides = {5, 5};
+        assertArrayEquals(expectedSides, actualSides);
+    }
 }
