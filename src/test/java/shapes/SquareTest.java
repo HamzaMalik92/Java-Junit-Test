@@ -1,5 +1,6 @@
-package com.pixcel;
+package shapes;
 
+import com.pixcel.shapes.Square;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

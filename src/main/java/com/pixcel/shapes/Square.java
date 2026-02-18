@@ -1,4 +1,4 @@
-package com.pixcel;
+package com.pixcel.shapes;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,7 +8,7 @@ import lombok.Data;
 public class Square {
     double side;
 
-    double getArea() {
+    public double getArea() {
         return side * side;
     }
 }
