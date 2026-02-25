@@ -77,4 +77,33 @@ class NumbersTest {
         assertEquals(7.5, swapped[0]);
         assertEquals(2.5, swapped[1]);
     }
+
+
+    @Test
+    @Order(7)
+    void testClosestDivisible() {
+        // Typical cases
+        assertEquals(12, Numbers.closestDivisible(13, 4), "Closest to 13 divisible by 4 should be 12");
+        assertEquals(-18, Numbers.closestDivisible(-15, 6), "Closest to -15 divisible by 6 should be -18");
+
+        // n divisible by m
+        assertEquals(20, Numbers.closestDivisible(20, 5), "20 is divisible by 5");
+
+        // Tie with positive numbers
+        assertEquals(8, Numbers.closestDivisible(6, 4), "Closest to 6 divisible by 4 should be 8");
+
+        // Tie with negative numbers
+        assertEquals(-8, Numbers.closestDivisible(-6, 4), "Closest to -6 divisible by 4 should be -8");
+
+        // Zero cases
+        assertEquals(0, Numbers.closestDivisible(0, 3), "0 divisible by 3 should be 0");
+
+        // Large numbers
+        assertEquals(1000000, Numbers.closestDivisible(999999, 500000), "Closest divisible by 500000");
+
+        // Edge case: negative n and negative m
+        assertThrows(IllegalArgumentException.class, () -> Numbers.closestDivisible(-10, -10));
+        // m cannot be 0
+        assertThrows(IllegalArgumentException.class, () -> Numbers.closestDivisible(10, 0));
+    }
 }
