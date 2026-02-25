@@ -8,6 +8,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class NumbersTest {
 
@@ -38,5 +39,42 @@ class NumbersTest {
                 assertEquals(expected, actualTable.get(i - 1), "Failed at n=" + n + ", i=" + i);
             }
         }
+    }
+
+    @Test
+    @Order(3)
+    void sumNaturalNum() {
+        int[] testNumbers = {0, 1, 5, 10, 100};
+        long[] expectedSums = {0, 1, 15, 55, 5050};
+
+        for (int i = 0; i < testNumbers.length; i++) {
+            assertEquals(expectedSums[i], Numbers.sumNaturalNum(testNumbers[i]), "Failed for N = " + testNumbers[i]);
+        }
+    }
+
+    @Test
+    @Order(5)
+    void sumSquareOfNaturalNum() {
+        int[] testNumbers = {0, 1, 5, 10, 100};
+        long[] expectedSums = {0, 1, 55, 385, 338350};
+
+        for (int i = 0; i < testNumbers.length; i++) {
+            assertEquals(expectedSums[i], Numbers.sumSquareOfNaturalNum(testNumbers[i]), "Failed for N = " + testNumbers[i]);
+        }
+    }
+
+    @Order(6)
+    @Test
+    void swapTwoNumbersTest() {
+        Number[] numbers = {5, 10};
+        Number[] swapped = Numbers.swapTwoNumbers(numbers);
+
+        assertEquals(10, numbers[0]);
+        assertEquals(5, swapped[1]);
+
+        Number[] doubles = {2.5, 7.5};
+        swapped = Numbers.swapTwoNumbers(doubles);
+        assertEquals(7.5, swapped[0]);
+        assertEquals(2.5, swapped[1]);
     }
 }

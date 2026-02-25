@@ -22,4 +22,19 @@ public class Numbers {
         }
         return table;
     }
+
+    public static long sumNaturalNum(int n) {
+        return ((long) n * (n + 1)) / 2;
+    }
+
+    public static long sumSquareOfNaturalNum(int n) {
+        return ((long) n * (n + 1) * (2L * n + 1)) / 6;
+    }
+
+    public static Number[] swapTwoNumbers(Number[] numbers) {
+        Number c = numbers[0];
+        numbers[0] = numbers[1];
+        numbers[1] = c;
+        return numbers;
+    }
 }
