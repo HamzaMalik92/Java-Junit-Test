@@ -4,6 +4,8 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.List;
 
@@ -105,5 +107,36 @@ class NumbersTest {
         assertThrows(IllegalArgumentException.class, () -> Numbers.closestDivisible(-10, -10));
         // m cannot be 0
         assertThrows(IllegalArgumentException.class, () -> Numbers.closestDivisible(10, 0));
+    }
+
+    @Test
+    @Order(7)
+    void testOppositeFaceOfDice() {
+        assertEquals(6, Numbers.oppositeFaceOfDice(1));
+        assertEquals(5, Numbers.oppositeFaceOfDice(2));
+        assertEquals(4, Numbers.oppositeFaceOfDice(3));
+        assertEquals(3, Numbers.oppositeFaceOfDice(4));
+        assertEquals(2, Numbers.oppositeFaceOfDice(5));
+        assertEquals(1, Numbers.oppositeFaceOfDice(6));
+
+        // Invalid dice faces
+        Exception ex1 = assertThrows(IllegalArgumentException.class, () -> Numbers.oppositeFaceOfDice(0));
+        assertEquals("Invalid dice face: 0", ex1.getMessage());
+
+        Exception ex2 = assertThrows(IllegalArgumentException.class, () -> Numbers.oppositeFaceOfDice(7));
+        assertEquals("Invalid dice face: 7", ex2.getMessage());
+    }
+
+    @ParameterizedTest(name = "a1={0}, a2={1}, n={2} => expected {3}")
+    @CsvSource({
+            "2, 3, 4, 5",
+            "1, 3, 10, 19",
+            "2, 1, 3, 0",
+            "2, 3, 1, 2",
+            "1, 2, 1000000, 1000000"
+    })
+    @Order(8)
+    void nthTermOfArithmeticSeries(int a1, int a2, int n, int expected) {
+        assertEquals(expected, Numbers.nthTermOfArithmeticSeries(a1, a2, n));
     }
 }

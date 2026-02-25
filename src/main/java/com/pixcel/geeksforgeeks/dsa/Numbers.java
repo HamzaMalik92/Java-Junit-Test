@@ -67,4 +67,21 @@ public class Numbers {
             return Math.abs(candidate1) > Math.abs(candidate2) ? candidate1 : candidate2;
         }
     }
+
+    public static int oppositeFaceOfDice(int n) {
+        return switch (n) {
+            case 1 -> 6;
+            case 2 -> 5;
+            case 3 -> 4;
+            case 4 -> 3;
+            case 5 -> 2;
+            case 6 -> 1;
+            default -> throw new IllegalArgumentException("Invalid dice face: " + n);
+        };
+    }
+
+    public static int nthTermOfArithmeticSeries(int a1, int a2, int n) {
+        int d = a2 - a1;       // common difference
+        return a1 + (n - 1) * d;
+    }
 }
